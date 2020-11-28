@@ -8,12 +8,16 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
-  - http:
+  - host: service.peijun.me
+    http:
       paths:
         - path: /lightsoff(/|$)(.*)
           backend:
             serviceName: lightsoff
             servicePort: 5000
+  - host: app.peijun.me
+    http:
+      paths:
         - path: /shadow(/|$)(.*)
           backend:
             serviceName: lightsoff
