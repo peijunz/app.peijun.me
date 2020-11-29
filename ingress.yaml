@@ -6,7 +6,15 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite ^(/[0-9a-zA-Z]+)$ $1/ redirect;
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  tls:
+  - hosts:
+    - service.peijun.me
+    - app.peijun.me
+    secretName: default-tls-secret
   rules:
   - host: service.peijun.me
     http:
@@ -18,7 +26,7 @@ spec:
   - host: app.peijun.me
     http:
       paths:
-        - path: /shadow(/|$)(.*)
+        - path: /lightsoff(/|$)(.*)
           backend:
-            serviceName: lightsoff
+            serviceName: lightsoff-app
             servicePort: 5000
