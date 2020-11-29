@@ -9,8 +9,13 @@ Example API call
 curl 'https://service.peijun.me/lightsoff/' \
   -H 'content-type: application/json' \
   --data-raw '[[1,1,0],[0,0,1],[1,1,1]]' -w "\n" 
+```
+
+Output:
+```json
 {"answer": [[0, 1, 1], [0, 1, 0], [1, 0, 1]], "status": "success"}
 ```
+
 
 ### Example 2
 Lightsoff React app: [src](https://github.com/peijunz/lightsoff-react), [webpage](https://app.peijun.me/lightsoff/)
