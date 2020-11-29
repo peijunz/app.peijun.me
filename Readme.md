@@ -1,4 +1,21 @@
-# Setting up cluster
+# Tiny k8s cluster
+## How to add your app
+
+### Example 1
+Python flask rest app to solve lights off puzzle: [src](https://github.com/peijunz/lightsoff), [healthCheck](https://service.peijun.me/lightsoff/healthCheck)
+
+Example API call
+```sh
+curl 'https://service.peijun.me/lightsoff/' \
+  -H 'content-type: application/json' \
+  --data-raw '[[1,1,0],[0,0,1],[1,1,1]]' -w "\n" 
+{"answer": [[0, 1, 1], [0, 1, 0], [1, 0, 1]], "status": "success"}
+```
+
+### Example 2
+Lightsoff React app: [src](https://github.com/peijunz/lightsoff-react), [webpage](https://app.peijun.me/lightsoff/)
+
+## Setup microk8s for `app.peijun.me`
 
 ```sh
 sudo ufw default allow routed
